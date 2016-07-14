@@ -21,6 +21,7 @@ The resulting plot shows how much smaller the tracks in the "neutral" (no effect
 Run example:
 
 > $ python check_all_stats.py
+
 (or run the method: check_negative_bias(stat_func = "name-of-statistic", n_sims=300, q_prob=1.0e-3, xmin=-3, xmax=0)
 
 The file check_all_stats_api.php hacks a way to run this in paralell for multiple statistics.
