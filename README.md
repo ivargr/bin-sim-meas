@@ -8,7 +8,9 @@ This is a collection of various small scripts used for investigating biases in b
 
 ## simulation_bias.py
 For every binary sim meassure in a list, it simulates E and var for different track sizes. Plots the results.
+
 Run example:
+
 $ python simuation_bias.py
 
 ## check_all_stats.py (should be renamed)
@@ -17,6 +19,7 @@ Contains the method check_negative_bias, which creates two sets of tracks (small
 The resulting plot shows how much smaller the tracks in the "neutral" (no effect size) can be (needs to be) in order to rank higher than the larget tracks with given effect size.
 
 Run example:
+
 $ python check_all_stats.py
 (or run the method: check_negative_bias(stat_func = "name-of-statistic", n_sims=300, q_prob=1.0e-3, xmin=-3, xmax=0)
 
