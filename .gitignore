@@ -1,0 +1,9 @@
+.idea/
+*.pyc
+*py#
+*~
+.#*
+*.aux
+*.log
+*#
+*.pdf
