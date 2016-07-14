@@ -11,7 +11,7 @@ For every binary sim meassure in a list, it simulates E and var for different tr
 
 Run example:
 
-$ python simuation_bias.py
+> $ python simuation_bias.py
 
 ## check_all_stats.py (should be renamed)
 Contains the method check_negative_bias, which creates two sets of tracks (small and large tracks), and investigates whether one of the sets can win over the other sets that has large effect size by containing smaller tracks.
@@ -20,7 +20,7 @@ The resulting plot shows how much smaller the tracks in the "neutral" (no effect
 
 Run example:
 
-$ python check_all_stats.py
+> $ python check_all_stats.py
 (or run the method: check_negative_bias(stat_func = "name-of-statistic", n_sims=300, q_prob=1.0e-3, xmin=-3, xmax=0)
 
 The file check_all_stats_api.php hacks a way to run this in paralell for multiple statistics.
