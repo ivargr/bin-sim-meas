@@ -225,6 +225,9 @@ if __name__=="__main__":
 
     stat_names_in_groups = [["jaccard", "forbes1"]]#, "jaccard"]]
     stat_names_in_groups = [["jaccard"]]#, "jaccard"]]
+    stat_names_in_groups = [["tetrachoric"]]#, "jaccard"]]
+    #stat_names_in_groups = [["forbes1"]]#, "jaccard"]]
+    stat_names_in_groups = [["forbes1"], ["tetrachoric"]]#, "jaccard"]]
 
 
     FOLDER = "mean_and_vars"
@@ -234,8 +237,9 @@ if __name__=="__main__":
     for group in stat_names_in_groups:
         legends = []
         axes = []
-        for k in [1, 2, 4, 8]:
-            ax = simulate_stat_names_group(group, k=k, n_sim = 20)
+        #for k in [1, 2, 4, 8]:
+        for k in [1]:
+            ax = simulate_stat_names_group(group, k=k, n_sim = 500  )
             k_counter += 1
             axes += ax
 

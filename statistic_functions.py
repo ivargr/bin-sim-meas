@@ -84,7 +84,8 @@ statistic_functions = {
                         "t6v2": lambda a,b,c,d,n: (a - (a+b)*(a+c)/n) / sqrt(a*(1-a/(a+c)) + c*(1-b/(d+c))),
                         "aoverb": lambda a,b,c,d,n: (a - b) / (a+b),
                         "aoverbnorm": lambda a,b,c,d,n :  (a / sqrt(a * (1-a/(a+c)))) / (b/ sqrt(b*(1-b/(n-(a+c)))) ),
-                        "onlya": lambda a,b,c,d,n: a / sqrt(a * (1-a/(a+c)))
+                        "onlya": lambda a,b,c,d,n: a / sqrt(a * (1-a/(a+c))),
+                        "tetrachoric": lambda a,b,c,d,n: cos ((pi/2)/(1 + sqrt((b*c)/(a*d))))
                         #"aoverbnorm": lambda a,b,c,d,n : 1.0* (a / np.sqrt((a+c)*(a/n) * (1-a/n))) / (b/ np.sqrt((1-a-c) * (b/n)*(1-b/n)) )
                         #"aoverbnorm": lambda a,b,c,d,n : ((a+c) - (1.0-a-c)) * (a / np.sqrt((a+c)*(a/n) * (1-a/n))) / (b/ np.sqrt((1-a-c) * (b/n)*(1-b/n)) )
                         #"aoverbnorm": lambda a,b,c,d,n : ((a+c) / (1-a-c)) * (a / ((a+c)*(a/n) * (1-a/n))) / (b/((1-a-c) * (b/n)*(1-b/n)) )

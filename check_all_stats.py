@@ -288,7 +288,7 @@ if __name__ =="__main__":
 
     set_size = 10 # Global
     FOLDER = "figures7"
-    check_negative_bias(stat_func = "forbes1", n_sims=30, q_prob=1.0e-3, xmin=-3, xmax=0)
+    check_negative_bias(stat_func = "tetrachoric", n_sims=30, q_prob=1.0e-3, xmin=-3, xmax=0)
     #check_negative_bias(stat_func = "jaccard", n_sims=50, q_prob=1.0e-3, xmin=-4, xmax=0)
     #check_negative_bias(stat_func = "jaccard", n_sims=300, q_prob=1.0e-3, xmin=0, xmax=5)
 #    check_pos_bias()
