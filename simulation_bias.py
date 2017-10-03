@@ -227,7 +227,7 @@ if __name__=="__main__":
     stat_names_in_groups = [["jaccard"]]#, "jaccard"]]
     stat_names_in_groups = [["tetrachoric"]]#, "jaccard"]]
     #stat_names_in_groups = [["forbes1"]]#, "jaccard"]]
-    stat_names_in_groups = [["forbes1"], ["tetrachoric"]]#, "jaccard"]]
+    stat_names_in_groups = [["forbes1", "jaccard"], ["tetrachoric"]]#, "jaccard"]]
 
 
 
