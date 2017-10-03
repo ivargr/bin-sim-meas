@@ -1,0 +1,206 @@
+\documentclass{bioinfo}
+\copyrightyear{2015} \pubyear{2015}
+
+\access{Advance Access Publication Date: Day Month Year}
+\appnotes{Manuscript Category}
+
+\begin{document}
+\firstpage{1}
+
+\subtitle{Subject Section}
+
+\title[short Title]{Ranking pairwise similarity between binary vectors: a comparison among different similarity measures}
+\author[Sample \textit{et~al}.]{Stefania Salvatore\,$^{\text{\sfb 1,}*}$, Knut Dagestad Rand\,$^{\text{\sfb 2}}$, Ivar Grytten\,$^{\text{\sfb 1}}$, Ingrid Glad\,$^{\text{\sfb 2}}$, Lars Holden\,$^{\text{\sfb 3}}$ and Geir Kjetil Sandve\,$^{\text{\sfb 1,}*}$}
+\address{$^{\text{\sf 1}}$Department of Informatics, University of Oslo, Oslo, Norway. \\
+$^{\text{\sf 2}}$Department of Mathematics, University of Oslo, Oslo, Norway. \\
+$^{\text{\sf 3}}$Statistics For Innovation, Norwegian Computing Center, Oslo, Norway.}
+
+\corresp{$^\ast$To whom correspondence should be addressed.}
+
+\history{Received on XXXXX; revised on XXXXX; accepted on XXXXX}
+
+\editor{Associate Editor: XXXXXXX}
+
+\abstract{\textbf{Motivation:} The quantitation of similarity between a pair of binary vectors has many uses and a long history. A variety of measures has been proposed, but there is little information available to guide practitioners in choosing a measure for a particular application. We here consider the setting where a set of binary vectors are to be ranked based on similarity to a separate reference vector, and use cases from genomics to exemplify the general points being raised. Most considerations also hold for the case where only a single pairwise relation is queried, since meaningful interpretation of similarity will usually be based on explicit or implicit contrasting to other data sets.\\
+\textbf{Results:} We first show that on both simulated and real data, the established measures have very different properties, and can lead to very different values and resulting rankings of similarity. In particular, the measures are affected very differently by changes in the balance between the binary classes. To elicit the basis for the differences between measures, and guide selection between them, we describe alternative modelling assumptions and show how these may form the basis of different estimates of similarity. Specifically, we propose that one can (for a given application) either assume that the vectors directly represent a discrete reality, or assume that they represent discretizations of latent real-valued vectors. Although this will in most cases represent a hypothetical aspect, it may be used to derive distinct desired properties of similarity measures. Finally, we point out that there may be a kind of bias-variance trade-off for the assessment of similarity, where an unbiased estimator of similarity usually leads to higher variance for vectors of skewed class distribution. Especially in settings where multiple vectors are ranked based on similarity, this may lead to the top ranks being dominated by vectors with strong class skew. We propose to explicitly apply a shrinkage estimator to tackle such challenges.\\
+\textbf{Availability:} The results can be replicated in the Genomic HyperBrowser a webtool available at http://hyperbrowser.uio.no.\\
+\textbf{Contact:} \href{stefasal@ifi.uio.no}\\
+\textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
+online.}
+
+\maketitle
+
+\section{Introduction}
+\label{intro}
+The generation and systematic collection of genome-wide data is exponentially increasing. Consortia such as the ENCyclopedia Of DNA Elements (ENCODE)  \cite{encode2012integrated} and the NIH Roadmap Epigenomics Mapping \cite{kundaje2015integrative}, systematically sequence and collect genome-wide data such as DNA methylation, histone modifications, chromatin accessibility and RNA transcription factors, in order to enable researchers to study variation patterns which could be associated with specific diseases. \par
+To date, a number of tools are available for integrating and statistically analysing these large collection of genomic tracks i.e. biological features bind with coordinates to a reference genome \cite{gundersen2011identifying,rosenbloom2013encode,sandve2010genomic}. Packages and web interface-tools such as \textit{Bioconductor} \cite{huber2015orchestrating} in R-software, \textit{bedtools} \cite{quinlan2010bedtools} in command line, Galaxy \cite{goecks2010galaxy} and HyperBrowser \cite{sandve2013genomic} have been developed for this purpose. However, these tools mainly focus on the statistical analysis of a single track or a pair of tracks, without the possibility of analysing collection of tracks simultaneously. \par
+To overcome this lack of tools, recently Simovski and co-authors \cite{simovski2017gsuite} have proposed a new open-source and web-based system which allows for the analysis of suite (collection) of tracks across the genome (GSuite HyperBrowser). The system provides researchers with the possibility of identifying which tracks of a collection are the most similar to a reference (query) track, or variation in the occurrence/co-occurrence of features for each individual track along the genome, by defying the similarity measure to be used for the statistical comparison. However, while a variety of similarity measures have been proposed, there is still no clear criteria for choosing a measure for a particular application. 
+
+\par 
+In this light, we here focus on one research question, i.e. the similarity measure to use, when a set of binary vectors are to be ranked based on similarity to a separate reference vector, dealing with variance for vectors of skewed class distribution. The main goal is to aid researchers less familiar with statistics or computer science in the choice of the most adequate statistic when analysing similarity between a query track and some subsets of suit of tracks, providing them with a powerful tool for running the analysis. The statistical approach has indeed been implemented in the GSuite HyperBrowser freely available at http://hyperbrowser.uio.no.
+
+%\enlargethispage{12pt}
+
+
+\begin{methods}
+\section{Methods}
+\subsection{Overview and notation}
+In the present study, we refer to binary vectors or tracks as sets of feature elements anchored to specific coordinates in a reference genome. A query or reference track is a separate track against which other tracks are queried and therefore ranked based on their pairwise similarity. \par A generic track contains positional information that can be reduced to segments. In genomic for example, we could consider DNA binding by a transcription factor or genome-wide set of locations of DNA methylation. The analytical question is then, which tracks from the collection stands out as more similar to the query track.  
+ 
+\subsection{Continuous or discrete underlying reality and statistics}
+Depending on the underlying reality of the biological process of interest, we distinguish two different scenarios; 1) the reality of the underlying process is discrete (binary vectors), and 2) the reality of the underlying process is continuous (vectors of continuous values). 
+\par In the latter scenario we have to make some assumptions in order to define similarity. In particular, we assume a bi-normal distribution for x (underlying continuous process of the query track Q) and y (underlying continuous process of a single track $R_i$ of the collection R). In order to obtain the discretisation ($R_i$) of the original continuous process ($y_i$) we have also to set a threshold. We here use the notation $R_ij$ to indicate different discretised variants of the same continuous process $y_i$  by using different thresholds $t_j$ for $j=1,2, ...m$.  
+\par For the question of interest, we want to rank the set of tracks $R_i$ for $i=1,2, ...n$ based on how often they co-occur with the query track $Q$, by using a similarity measure between each track and the query track, and rank the tracks based on that similarity score.
+We start by defying the three different similarity measures; 1) the tetrachoric correlation \cite{drasgow1988polychoric,olsson1979maximum,pearson1896mathematical}, 2) the Forbes index \cite{forbes1907local} and 3) the Jaccard index \cite{jaccard1901etude} for similarity. 
+The tetrachoric correlation assumes that the two tracks $R_i$ and $Q$ are generated by thresholding two underlying continuous processes normally distributed \cite{hamedani1975determination}. The tetrachoric correlation $\rho$ is then defined as the correlation between the underlying processes. The Forbes similarity measure is defined as $\frac{N *\mid R_i  \cap Q\mid}{ (\mid R_i\mid * \mid Q \mid)}$, where the notation $\mid T\mid $ indicates the number of elements of a set $T$. Finally, the Jaccard similarity measure is defined as $\frac{\mid R_i  \cap Q\mid}{ \mid R_i  \cup Q\mid}$.
+\subsection{Software}
+The tetrachoric correlation has been calculated using the package $polycor$ \cite{fox2010polycor} available in R \cite{team2000r}, while the Forbes and Jaccard indexes have been implemented directly in the GSuite Hyper Browser \cite{sandve2010genomic}.
+
+\subsection{GSuite Hyper Browser}
+The GSuite Hyper Browser is a Python-language integrated software system, supporting codes in R and Javascript. It uses codes functionality from the Genomic Hyper Browser \cite{sandve2010genomic} to analyse pairwise relations between tracks, while the user interface is based on the Galaxy system \cite{goecks2010galaxy}. 
+More background information, regarding this tool can be found in an earlier publication based on the same material \cite{simovski2017gsuite}. 
+
+\end{methods}
+
+
+\section{Results}
+
+
+
+
+
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+
+
+
+
+
+
+%\begin{table}[!t]
+%\processtable{This is table caption\label{Tab:01}} {\begin{tabular}{@{}llll@{}}\toprule head1 &
+%head2 & head3 & head4\\\midrule
+%row1 & row1 & row1 & row1\\
+%row2 & row2 & row2 & row2\\
+%row3 & row3 & row3 & row3\\
+%row4 & row4 & row4 & row4\\\botrule
+%\end{tabular}}{This is a footnote}
+%\end{table}
+
+
+
+%\begin{figure}[!tpb]%figure1
+%\fboxsep=0pt\colorbox{gray}{\begin{minipage}[t]{235pt} \vbox to 100pt{\vfill\hbox to
+%235pt{\hfill\fontsize{24pt}{24pt}\selectfont FPO\hfill}\vfill}
+%\end{minipage}}
+%\centerline{\includegraphics{fig01.eps}}
+%\caption{Caption, caption.}\label{fig:01}
+%\end{figure}
+
+%\begin{figure}[!tpb]%figure2
+%%\centerline{\includegraphics{fig02.eps}}
+%\caption{Caption, caption.}\label{fig:02}
+%\end{figure}
+
+
+
+
+
+
+
+
+
+
+\section{Discussion}
+
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+
+
+
+
+
+
+%Table~\ref{Tab:01} shows that Text Text Text Text Text  Text Text
+%Text Text Text Text. Figure~2\vphantom{\ref{fig:02}} shows that
+
+%Text Text. Figure~2\vphantom{\ref{fig:02}} shows that the above
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method Text
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     please remove the " % " symbol from \centerline{\includegraphics{fig01.eps}}
+%     as it may ignore the figures.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\section{Conclusion}
+
+(Table~\ref{Tab:01}) 
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+
+
+
+%\begin{enumerate}
+%\item this is item, use enumerate
+%\item this is item, use enumerate
+%\item this is item, use enumerate
+%\end{enumerate}
+
+
+%Figure~2\vphantom{\ref{fig:02}} shows\vadjust{\pagebreak} that the
+
+%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+%Text Text Text Text Text Text Text Text Text  Text Text.
+%
+%Text Text Text Text Text Text  Text Text Text Text Text Text Text
+%Text Text Text Text Text Text Text\break Text.
+
+%
+%Text Text Text Text Text Text  Text Text Text Text Text Text Text
+%Text Text  Text Text Text Text Text Text.
+%%Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
+%Text Text Text\vspace*{-10pt}
+
+
+\section*{Acknowledgements}
+
+
+%text text text\vspace*{-12pt}
+
+\section*{Funding}
+
+%This work has been supported by the... Text Text  Text Text.\vspace*{-12pt}
+
+%\bibliographystyle{natbib}
+%\bibliographystyle{achemnat}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{abbrv}
+%\bibliographystyle{bioinformatics}
+\bibliographystyle{plain}
+\bibliography{document}
+
+
+
+\end{document}

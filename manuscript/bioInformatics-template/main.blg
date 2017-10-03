@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+format.doi is an unknown function---line 554 of file plain.bst
+format.url is an unknown function---line 555 of file plain.bst
+Database file #1: document.bib
+Repeated entry---line 199 of file document.bib
+ : @article{goecks2010galaxy
+ :                          ,
+I'm skipping whatever remains of this entry
+Warning--empty location in forbes1907local
+You've used 18 entries,
+            2137 wiz_defined-function locations,
+            621 strings with 8141 characters,
+and the built_in function-call counts, 7233 in all, are:
+= -- 675
+> -- 487
+< -- 3
++ -- 197
+- -- 176
+* -- 595
+:= -- 1265
+add.period$ -- 54
+call.type$ -- 18
+change.case$ -- 134
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 219
+empty$ -- 444
+format.name$ -- 176
+if$ -- 1422
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 19
+newline$ -- 93
+num.names$ -- 36
+pop$ -- 116
+preamble$ -- 1
+purify$ -- 117
+quote$ -- 0
+skip$ -- 164
+stack$ -- 0
+substring$ -- 392
+swap$ -- 41
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 70
+warning$ -- 1
+while$ -- 61
+width$ -- 20
+write$ -- 197
+(There were 3 error messages)

@@ -1,0 +1,120 @@
+\begin{thebibliography}{10}
+
+\bibitem{encode2012integrated}
+ENCODE~Project Consortium et~al.
+\newblock An integrated encyclopedia of dna elements in the human genome.
+\newblock {\em Nature}, 489(7414):57--74, 2012.
+
+\bibitem{drasgow1988polychoric}
+Fritz Drasgow.
+\newblock Polychoric and polyserial correlations.
+\newblock {\em Encyclopedia of statistical sciences}, 1988.
+
+\bibitem{forbes1907local}
+Stephen~A Forbes.
+\newblock {\em On the local distribution of certain Illinois fishes: an essay
+  in statistical ecology}, volume~7.
+\newblock Illinois State Laboratory of Natural History, 1907.
+
+\bibitem{fox2010polycor}
+John Fox.
+\newblock Polycor: polychoric and polyserial correlations. r package version
+  0.7-8.
+\newblock {\em Online [URL] http://www. cran. r-project.
+  org/web/packages/polycor/index. html (Accessed on 31 August 2010)}, 2010.
+
+\bibitem{goecks2010galaxy}
+Jeremy Goecks, Anton Nekrutenko, and James Taylor.
+\newblock Galaxy: a comprehensive approach for supporting accessible,
+  reproducible, and transparent computational research in the life sciences.
+\newblock {\em Genome biology}, 11(8):R86, 2010.
+
+\bibitem{gundersen2011identifying}
+Sveinung Gundersen, Mat{\'u}{\v{s}} Kala{\v{s}}, Osman Abul, Arnoldo Frigessi,
+  Eivind Hovig, and Geir~Kjetil Sandve.
+\newblock Identifying elemental genomic track types and representing them
+  uniformly.
+\newblock {\em BMC bioinformatics}, 12(1):494, 2011.
+
+\bibitem{hamedani1975determination}
+GG~Hamedani and MN~Tata.
+\newblock On the determination of the bivariate normal distribution from
+  distributions of linear combinations of the variables.
+\newblock {\em American Mathematical Monthly}, pp. 913--915, 1975.
+
+\bibitem{huber2015orchestrating}
+Wolfgang Huber, Vincent~J Carey, Robert Gentleman, Simon Anders, Marc Carlson,
+  Benilton~S Carvalho, Hector~Corrada Bravo, Sean Davis, Laurent Gatto, Thomas
+  Girke, et~al.
+\newblock Orchestrating high-throughput genomic analysis with bioconductor.
+\newblock {\em Nature methods}, 12(2):115--121, 2015.
+
+\bibitem{jaccard1901etude}
+Paul Jaccard.
+\newblock {\'E}tude comparative de la distribution florale dans une portion des
+  alpes et des jura.
+\newblock {\em Bull Soc Vaudoise Sci Nat}, 37:547--579, 1901.
+
+\bibitem{kundaje2015integrative}
+Anshul Kundaje, Wouter Meuleman, Jason Ernst, Misha Bilenky, Angela Yen,
+  Alireza Heravi-Moussavi, Pouya Kheradpour, Zhizhuo Zhang, Jianrong Wang,
+  Michael~J Ziller, et~al.
+\newblock Integrative analysis of 111 reference human epigenomes.
+\newblock {\em Nature}, 518(7539):317--330, 2015.
+
+\bibitem{olsson1979maximum}
+Ulf Olsson.
+\newblock Maximum likelihood estimation of the polychoric correlation
+  coefficient.
+\newblock {\em Psychometrika}, 44(4):443--460, 1979.
+
+\bibitem{pearson1896mathematical}
+Karl Pearson.
+\newblock Mathematical contributions to the theory of evolution. iii.
+  regression, heredity, and panmixia.
+\newblock {\em Philosophical Transactions of the Royal Society of London.
+  Series A, containing papers of a mathematical or physical character},
+  187:253--318, 1896.
+
+\bibitem{quinlan2010bedtools}
+Aaron~R Quinlan and Ira~M Hall.
+\newblock Bedtools: a flexible suite of utilities for comparing genomic
+  features.
+\newblock {\em Bioinformatics}, 26(6):841--842, 2010.
+
+\bibitem{rosenbloom2013encode}
+Kate~R Rosenbloom, Cricket~A Sloan, Venkat~S Malladi, Timothy~R Dreszer,
+  Katrina Learned, Vanessa~M Kirkup, Matthew~C Wong, Morgan Maddren, Ruihua
+  Fang, Steven~G Heitner, et~al.
+\newblock Encode data in the ucsc genome browser: year 5 update.
+\newblock {\em Nucleic acids research}, 41(D1):D56--D63, 2013.
+
+\bibitem{sandve2013genomic}
+Geir~K Sandve, Sveinung Gundersen, Morten Johansen, Ingrid~K Glad, Krishanthi
+  Gunathasan, Lars Holden, Marit Holden, Knut Liest{\o}l, St{\aa}le Nyg{\aa}rd,
+  Vegard Nygaard, et~al.
+\newblock The genomic hyperbrowser: an analysis web server for genome-scale
+  data.
+\newblock {\em Nucleic acids research}, 41(W1):W133--W141, 2013.
+
+\bibitem{sandve2010genomic}
+Geir~K Sandve, Sveinung Gundersen, Halfdan Rydbeck, Ingrid~K Glad, Lars Holden,
+  Marit Holden, Knut Liest{\o}l, Trevor Clancy, Egil Ferkingstad, Morten
+  Johansen, et~al.
+\newblock The genomic hyperbrowser: inferential genomics at the sequence level.
+\newblock {\em Genome biology}, 11(12):R121, 2010.
+
+\bibitem{simovski2017gsuite}
+Boris Simovski, Daniel Vod{\'a}k, Sveinung Gundersen, Diana Domanska,
+  Abdulrahman Azab, Lars Holden, Marit Holden, Ivar Grytten, Knut Rand, Finn
+  Drabl{\o}s, et~al.
+\newblock Gsuite hyperbrowser: integrative analysis of dataset collections
+  across the genome and epigenome.
+\newblock {\em GigaScience}, p. gix032, 2017.
+
+\bibitem{team2000r}
+R~Core Team.
+\newblock R language definition.
+\newblock {\em Vienna, Austria: R foundation for statistical computing}, 2000.
+
+\end{thebibliography}
